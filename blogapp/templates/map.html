@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+{% block contents %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>간단한 지도 표시하기</title>
+    {% comment %} 발급받은 클라이언트 ID 추가 {% endcomment %}
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=capf31yqwr"></script>
+    {% comment %}  {% endcomment %}
+</head>
+<body>
+<div class="container">
+    {% comment %} 지도 {% endcomment %}
+    <div class="container mr-auto" id="map" style="width:50%;height:400px;"></div>
+    {% comment %}  {% endcomment %}
+</div>
+
+{% comment %} 지도 설정 {% endcomment %}
+<script>
+    {% comment %} center: 열릴 때 초기 위도 경도 설정 {% endcomment %}
+    {% comment %} zoom: 확대 정도 설정 {% endcomment %}
+    var mapOptions = {
+        center: new naver.maps.LatLng(36.969745, 127.871320),
+        zoom: 15
+    };
+    {% comment %} 'map' = 적용할 div의 id값 {% endcomment %}
+    {% comment %} mapOptions = 적용될 지도의 옵션 설정 {% endcomment %}
+    var map = new naver.maps.Map('map', mapOptions);
+
+    {% comment %} 마커 생성 및 설정 {% endcomment %}
+    var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(36.969745, 127.871320),
+        map: map
+    });
+    {% comment %}  {% endcomment %}
+</script>
+{% comment %}  {% endcomment %}
+
+</body>
+{% endblock contents %}
+</html>

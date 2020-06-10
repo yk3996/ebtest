@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class="container">
+    <h1>Sign up</h1>
+    {%if error%}
+        {{error}}
+    {% endif %}
+    <form method="POST" action="{%url 'signin'%}">
+        {% csrf_token %}
+        ID: <input type="text" name="username">
+        <br>
+        PW: <input type="password" name="password">
+        <br>
+        <input type="submit" value="로그인">
+    </form>
+</div>
+{% endblock %}
